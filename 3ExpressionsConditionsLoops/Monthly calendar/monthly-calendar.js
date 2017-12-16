@@ -12,6 +12,7 @@ function calendar([day, month, year]) {
     dateCopy.setDate(1);
     dateCopy.setHours(-1);
 
+
     for (let weekDay = 0; weekDay < firstWeekDayOfThisMonth; weekDay++) {
 
         let lastDatePrevMonth = dateCopy.getDate();
