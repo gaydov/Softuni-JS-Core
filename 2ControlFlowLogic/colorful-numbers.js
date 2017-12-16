@@ -2,7 +2,7 @@ function printHTMLWithColorfulNums(endValue) {
 
     let result = "<ul>\n";
 
-    for (var number = 1; number <= endValue; number++) {
+    for (let number = 1; number <= endValue; number++) {
 
         let color = "green";
         if (number % 2 === 0) {
