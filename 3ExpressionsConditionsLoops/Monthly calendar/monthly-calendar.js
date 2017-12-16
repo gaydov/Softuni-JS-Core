@@ -1,15 +1,13 @@
 function calendar([day, month, year]) {
 
-    let date = new Date(year, month - 1, day);
-    let thisMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-    let nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
-    let firstWeekDayOfThisMonth = thisMonth.getDay();
-    let daysInCurrentMonth = Math.round((nextMonth.getTime() - thisMonth.getTime()) / (1000 * 60 * 60 * 24));
-
     let result = "<table>\n";
     result += "  <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>\n";
-
     result += "  <tr>";
+
+    let date = new Date(year, month - 1, day);
+    let thisMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+    let firstWeekDayOfThisMonth = thisMonth.getDay();
+
     let dateCopy = new Date(date);
     dateCopy.setDate(1);
     dateCopy.setHours(-1);
@@ -22,7 +20,10 @@ function calendar([day, month, year]) {
         result += `<td class="prev-month">${dateFromPrevMonth}</td>`;
     }
 
+    let nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    let daysInCurrentMonth = Math.round((nextMonth.getTime() - thisMonth.getTime()) / (1000 * 60 * 60 * 24));
     let weekDay = firstWeekDayOfThisMonth;
+
     for (let dayCounter = 1; dayCounter <= daysInCurrentMonth; dayCounter++) {
 
         weekDay %= 7;
