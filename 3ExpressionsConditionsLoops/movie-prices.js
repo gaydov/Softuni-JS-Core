@@ -1,5 +1,5 @@
 function getMoviePrice([title, dayOfWeek]) {
-
+    
     let price = 0;
 
     switch (title.toLowerCase()) {

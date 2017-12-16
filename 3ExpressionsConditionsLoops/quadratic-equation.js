@@ -16,6 +16,6 @@ function calcQuadraticEquation(a, b, c) {
         x1 = (-b + Math.sqrt(D)) / (2 * a);
         x2 = (-b - Math.sqrt(D)) / (2 * a);
 
-        return `${Math.min(x1, x2)} ${Math.max(x1, x2)}`
+        return `${Math.min(x1, x2)} ${Math.max(x1, x2)}`;
     }
 }

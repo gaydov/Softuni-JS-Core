@@ -1,23 +1,25 @@
 function printFigureOf4Squares(n) {
 
-    let length = n;
+    let totalRows = n;
     if (n % 2 === 0) {
 
-        length -= 1;
+        totalRows -= 1;
     }
 
     let result = "";
-    let dashOrSpaceCount = ((2 * n - 1) - 3) / 2;
+    let dashOrSpaceCount = ((2 * n - 1) - 3) / 2; // total symbols on row minus the three "+" or "|" then divided by two
+    let middleRow = Math.floor((n - 1) / 2);
 
-    for (let row = 0; row < length; row++) {
+    for (let row = 0; row < totalRows; row++) {
 
         let plusOrPipe = "|";
         let dashOrSpace = " ";
 
-        if (row === 0 || row === Math.floor((n - 1) / 2) || row === length - 1) {
+        // first row, middle row, last row
+        if (row === 0 || row === middleRow || row === totalRows - 1) {
 
             plusOrPipe = "+";
-            dashOrSpace = "-"
+            dashOrSpace = "-";
         }
 
         result += `${plusOrPipe}${dashOrSpace.repeat(dashOrSpaceCount)}${plusOrPipe}${dashOrSpace.repeat(dashOrSpaceCount)}${plusOrPipe}\n`;
