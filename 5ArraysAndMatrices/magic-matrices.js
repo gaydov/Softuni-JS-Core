@@ -1,24 +1,40 @@
 function isMatrixMagic(matrix) {
 
-    let currentSum = 0;
+    let previousRowSum = 0;
+    let currentRowSum = 0;
 
+    // comparing the sum of each row with the previous one
     for (let row = 0; row < matrix.length; row++) {
 
-        let rowSum = 0;
-        let colSum = 0;
+        previousRowSum = currentRowSum;
+        currentRowSum = matrix[row].reduce((a, b) => a + b, 0);
 
-        for (let col = 0; col < matrix.length; col++) {
-
-            rowSum += matrix[row][col];
-            colSum += matrix[col][row];
-        }
-
-        if (row > 0 && (currentSum !== rowSum || currentSum !== colSum)) {
+        if (row > 0 && currentRowSum !== previousRowSum) {
 
             return false;
         }
+    }
 
-        currentSum = rowSum;
+    let lastRowSum = currentRowSum;
+    let columnsCount = matrix[0].length;
+    let previousColumnSum = 0;
+    let currentColumnSum = 0;
+
+    // comparing the sum of each column with the previous one and with the sum of the last row
+    for (let col = 0; col < columnsCount; col++) {
+
+        previousColumnSum = currentColumnSum;
+        currentColumnSum = 0;
+
+        for (let row = 0; row < matrix.length; row++) {
+
+            currentColumnSum += matrix[row][col];
+        }
+
+        if (col > 0 && (currentColumnSum !== previousColumnSum || currentColumnSum !== lastRowSum)) {
+
+            return false;
+        }
     }
 
     return true;
